@@ -1,8 +1,13 @@
 package fibonacci;
 
+import java.util.Scanner;
+
 /**
  * @author: Penger
  * @time ： 2019/3/22
+ *
+ * 一个楼梯有50个台阶，每一步可以走一个台阶，也可以走两个台阶，请问走完这个楼梯共有多少种方法
+ *
  **/
 public class Fibonacci {
     /**
@@ -55,8 +60,8 @@ public class Fibonacci {
             System.out.print(0 + " ");
         }
         if (n <= 1) {
-            for (int i = 0; i < n; i++) {
-                System.out.print(n + " ");
+            for (int i = 0; i <= n; i++) {
+                System.out.print(i + " ");
             }
         } else {
             first = 0L;
@@ -72,8 +77,24 @@ public class Fibonacci {
     }
 
     public static void main(String[] args) {
-        System.out.println(fibonacciRecursive(10));
-        System.out.println(fibonacciLoop(10));
-        fibonacciLoopPrint(10);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("输入quit退出，输入数字n，输出n阶斐波那契数：");
+        while (scanner.hasNext()) {
+            String next = scanner.next();
+            if ("quit".equals(next)) {
+                break;
+            } else {
+                int n = Integer.valueOf(next);
+                long start = System.nanoTime();
+                System.out.println(fibonacciLoop(n - 1));
+                long loopEnd = System.nanoTime();
+                System.out.println("使用循环费时：" + (loopEnd - start));
+                System.out.println(fibonacciRecursive(n - 1));
+                System.out.println("使用递归费时:" + (System.nanoTime() - loopEnd));
+                fibonacciLoopPrint(n - 1);
+            }
+
+        }
+
     }
 }
