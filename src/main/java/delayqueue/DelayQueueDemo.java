@@ -8,7 +8,7 @@ import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
 /**
- * author: TAOPENG
+ * @author Penger
  * time ： 2019/3/21
  * <p>
  * ArrayBlockingQueue ：一个由数组结构组成的有界阻塞队列。
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * LinkedTransferQueue：一个由链表结构组成的无界阻塞队列。
  * LinkedBlockingDeque：一个由链表结构组成的双向阻塞队列。
  * </p>
- **/
+ */
 public class DelayQueueDemo {
     private static DelayQueue<DelayTask> delayQueue = new DelayQueue<>();
 
@@ -59,6 +59,7 @@ public class DelayQueueDemo {
 }
 
 @Data
+
 class DelayTask implements Delayed {
     // 延迟时间
     private long delay;
