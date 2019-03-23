@@ -1,4 +1,4 @@
-package fibonacci;
+package swordoffer;
 
 import java.util.Scanner;
 
