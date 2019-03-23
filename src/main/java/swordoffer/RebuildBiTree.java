@@ -20,6 +20,17 @@ public class RebuildBiTree {
         return rebuildBiTree(pre, 0, pre.length - 1, in, 0, in.length - 1);
     }
 
+    /**
+     * 一颗子树在前序遍历的起始位置和结束位置，在中序遍历的起始位和结束位
+     *
+     * @param pre      前序遍历数组
+     * @param preStart 前序遍历的起始位置
+     * @param preEnd   前序遍历的结束位置
+     * @param in       中序遍历数组
+     * @param inStart  序遍历的起始位
+     * @param inEnd    序遍历的结束位
+     * @return 子树的根节点
+     */
     private static TreeNode rebuildBiTree(int[] pre, int preStart, int preEnd, int[] in, int inStart, int inEnd) {
         if (preStart > preEnd || inStart > inEnd) {
             return null;
