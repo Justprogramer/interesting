@@ -1,4 +1,4 @@
-package delayqueue;
+package queue;
 
 import lombok.Data;
 
@@ -59,15 +59,22 @@ public class DelayQueueDemo {
 }
 
 @Data
-
 class DelayTask implements Delayed {
-    // 延迟时间
+    /**
+     * 延迟时间
+     */
     private long delay;
-    // 到期时间
+    /**
+     * 到期时间
+     */
     private long expire;
-    // 数据
+    /**
+     * 数据
+     */
     private String msg;
-    // 创建时间
+    /**
+     * 创建时间
+     */
     private long now;
 
     public DelayTask(long delay, String msg) {
@@ -84,8 +91,10 @@ class DelayTask implements Delayed {
 
     @Override
     public int compareTo(Delayed o) {
-        if (o == this) // compare zero ONLY if same object
+        // compare zero ONLY if same object
+        if (o == this) {
             return 0;
+        }
         return (int) (this.getDelay(TimeUnit.MILLISECONDS) - o.getDelay(TimeUnit.MILLISECONDS));
 
     }
