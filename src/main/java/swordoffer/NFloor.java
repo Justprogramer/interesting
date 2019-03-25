@@ -42,6 +42,18 @@ public class NFloor {
         return sum;
     }
 
+    //矩阵覆盖问题，2*1(可变换成1*2)矩阵去无重复覆盖2*n的矩阵，斐波那契的变种问题
+
+    private static int rectCover(int target) {
+        if (target <= 0) {
+            return 0;
+        } else if (target <= 2) {
+            return target;
+        } else {
+            return rectCover(target - 1) + rectCover(target - 2);
+        }
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
