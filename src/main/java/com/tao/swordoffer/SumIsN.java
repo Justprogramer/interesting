@@ -64,8 +64,8 @@ public class SumIsN {
 
     @Test
     public void test() {
-        int[] array = {1, 2, 3,3, 4, 6, 7, 8, 8,9};
-        find(array, 9);
+        int[] array = {10,10,10,7,7,7,7,7,7,6,6,6};
+        find(array, 30);
         System.out.println(result);
     }
 }

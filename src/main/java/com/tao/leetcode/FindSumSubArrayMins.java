@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * 最小值为 3，1，2，4，1，1，2，1，1，1，和为 17
  * </p>
  **/
-public class FindSumSubarrayMins {
+public class FindSumSubArrayMins {
     private static int find(int[] array) {
         long sum = 0;
         for (int i = 0; i < array.length; i++) {
