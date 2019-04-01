@@ -1,5 +1,7 @@
 package com.tao.swordoffer;
 
+import com.tao.common.TreeNode;
+
 import java.util.ArrayDeque;
 import java.util.Optional;
 import java.util.Queue;
@@ -12,16 +14,6 @@ import java.util.Queue;
  * @solution: 二叉树的中序遍历就是有序的，使用队列存储遍历的节点，再调整他的指针
  **/
 public class BiSortTreeToBiListNode {
-    class TreeNode {
-        int val = 0;
-        TreeNode left = null;
-        TreeNode right = null;
-
-        TreeNode(int val) {
-            this.val = val;
-
-        }
-    }
 
     /**
      * 使用队列实现
@@ -54,14 +46,13 @@ public class BiSortTreeToBiListNode {
     }
 
     public static void main(String[] args) {
-        BiSortTreeToBiListNode treeDemo = new BiSortTreeToBiListNode();
-        TreeNode root = treeDemo.new TreeNode(10);
-        TreeNode leftChild1 = treeDemo.new TreeNode(8);
-        TreeNode rightChild1 = treeDemo.new TreeNode(13);
-        TreeNode leftChild11 = treeDemo.new TreeNode(7);
-        TreeNode rightChild12 = treeDemo.new TreeNode(9);
-        TreeNode leftChild21 = treeDemo.new TreeNode(11);
-        TreeNode rightChild22 = treeDemo.new TreeNode(14);
+        TreeNode root = new TreeNode(10);
+        TreeNode leftChild1 = new TreeNode(8);
+        TreeNode rightChild1 = new TreeNode(13);
+        TreeNode leftChild11 = new TreeNode(7);
+        TreeNode rightChild12 = new TreeNode(9);
+        TreeNode leftChild21 = new TreeNode(11);
+        TreeNode rightChild22 = new TreeNode(14);
         root.left = leftChild1;
         root.right = rightChild1;
         leftChild1.left = leftChild11;

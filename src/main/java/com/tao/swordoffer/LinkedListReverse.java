@@ -1,5 +1,7 @@
 package com.tao.swordoffer;
 
+import com.tao.common.ListNode;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -78,11 +80,3 @@ public class LinkedListReverse {
     }
 }
 
-class ListNode {
-    int val;
-    ListNode next = null;
-
-    ListNode(int val) {
-        this.val = val;
-    }
-}

@@ -1,5 +1,7 @@
 package com.tao.swordoffer;
 
+import com.tao.common.TreeNode;
+
 /**
  * @author: Penger
  * @time: 2019/3/24
@@ -9,15 +11,6 @@ package com.tao.swordoffer;
  * 如果根节点不相同，则判断root1的左子树和root2是否相同，再判断右子树和root2是否相同;
  **/
 public class SubTree {
-    class TreeNode {
-        int val = 0;
-        TreeNode left = null;
-        TreeNode right = null;
-
-        public TreeNode(int val) {
-            this.val = val;
-        }
-    }
 
     private static boolean hasSubtree(TreeNode root1, TreeNode root2) {
         return root1 != null

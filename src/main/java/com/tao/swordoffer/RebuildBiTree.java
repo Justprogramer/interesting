@@ -1,5 +1,7 @@
 package com.tao.swordoffer;
 
+import com.tao.common.TreeNode;
+
 import java.util.Optional;
 
 /**
@@ -51,15 +53,5 @@ public class RebuildBiTree {
         int[] in = {4, 2, 7, 1, 5, 3, 8, 6};
         TreeNode root = rebuildBiTree(pre, in);
         Optional.ofNullable(root).ifPresent(r -> System.out.println(r.val));
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
     }
 }

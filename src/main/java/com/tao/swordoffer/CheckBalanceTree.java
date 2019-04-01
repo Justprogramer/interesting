@@ -1,5 +1,7 @@
 package com.tao.swordoffer;
 
+import com.tao.common.TreeNode;
+
 import java.util.Optional;
 
 /**
@@ -11,7 +13,7 @@ import java.util.Optional;
  **/
 public class CheckBalanceTree {
 
-    public boolean isBalanceTree(TreeNode root) {
+    private boolean isBalanceTree(TreeNode root) {
         return Optional.ofNullable(root).map(r -> {
             int left = treeDepth(r.left);
             int right = treeDepth(r.right);

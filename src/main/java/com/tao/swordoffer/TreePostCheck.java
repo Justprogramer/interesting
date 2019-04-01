@@ -9,17 +9,7 @@ package com.tao.swordoffer;
  * 左节点 < 根节点 < 右节点, 根据这个区分根节点的左右子树，再递归判断，右边如果存在比根节点小的，说明不是合法序列
  **/
 public class TreePostCheck {
-    class TreeNode {
-        int val = 0;
-        TreeNode left = null;
-        TreeNode right = null;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-    }
-
-    private static boolean VerifySquenceOfBST(int[] sequence) {
+    private static boolean verifySequenceOfBST(int[] sequence) {
         return sequence.length != 0
                 && (sequence.length == 1 || judge(sequence, 0, sequence.length - 1));
     }
@@ -50,6 +40,6 @@ public class TreePostCheck {
 
     public static void main(String[] args) {
         int[] sequence = {4, 8, 6, 12, 16, 14, 10};
-        System.out.println(VerifySquenceOfBST(sequence));
+        System.out.println(verifySequenceOfBST(sequence));
     }
 }

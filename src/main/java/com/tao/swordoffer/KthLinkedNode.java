@@ -1,5 +1,7 @@
 package com.tao.swordoffer;
 
+import com.tao.common.ListNode;
+
 /**
  * @author: Penger
  * @time: 2019/3/24
@@ -11,7 +13,7 @@ package com.tao.swordoffer;
  * 当第一个指针到达链表的尾节点时，第二个指针刚好指向倒数第k个节点。
  **/
 public class KthLinkedNode {
-    public static ListNode FindKthToTail(ListNode head, int k) {
+    public static ListNode findKthToTail(ListNode head, int k) {
         if (k == 0 || head == null) {
             return null;
         }
@@ -39,7 +41,7 @@ public class KthLinkedNode {
         listNode.next.next = new ListNode(3);
         listNode.next.next.next = new ListNode(4);
         listNode.next.next.next.next = new ListNode(5);
-        ListNode listNode1 = FindKthToTail(listNode, 5);
+        ListNode listNode1 = findKthToTail(listNode, 5);
         System.out.println(listNode1 == null ? "" : listNode1.val);
     }
 
