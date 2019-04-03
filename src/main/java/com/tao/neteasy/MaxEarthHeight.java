@@ -1,4 +1,4 @@
-package com.tao;
+package com.tao.neteasy;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -7,21 +7,35 @@ import java.util.Scanner;
  * @author: Penger
  * @time: 2019/3/30
  * @description: <p>
+ * 输入一个01代表的二维矩阵，0代表海洋，1代表陆地，海洋高度为0，陆地高度最少为1，要求相邻高度差不能超过1
+ * 输出最大高度
+ * 比如：
+ * 0 1 1 1
+ * 0 0 1 1
+ * 1 1 1 1
+ * 1 1 1 1
+ * 高度可以是
+ * 0 1 2 3
+ * 0 0 1 2
+ * 1 1 2 3
+ * 1 2 3 4
+ * 所以最大高度是4
  * </p>
  **/
-public class Main {
+public class MaxEarthHeight {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         int[][] matrix = new int[n][n];
         for (int[] m : matrix) {
             for (int i = 0; i < matrix[0].length; i++) {
-              m[i] = scanner.nextInt();
+                m[i] = scanner.nextInt();
             }
         }
         System.out.println(solve(matrix));
     }
-    public  static int solve(int[][] matrix) {
+
+    public static int solve(int[][] matrix) {
         int[][] res = find(matrix);
         System.out.println(Arrays.deepToString(res));
         int max = 0;
