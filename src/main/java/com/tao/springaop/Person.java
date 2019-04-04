@@ -1,7 +1,5 @@
 package com.tao.springaop;
 
-import org.springframework.stereotype.Component;
-
 /**
  * @author: Penger
  * @time: 2019/3/28

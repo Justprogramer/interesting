@@ -1,3 +1,5 @@
+package com.tao;
+
 import com.tao.springaop.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -16,8 +18,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * </p>
  **/
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
-@ComponentScan({"com.tao"})
-@EnableAspectJAutoProxy(proxyTargetClass = false)
+@EnableAspectJAutoProxy
 public class UtilApplication {
     private final Person person;
 
