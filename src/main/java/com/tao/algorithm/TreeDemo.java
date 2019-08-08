@@ -2,9 +2,7 @@ package com.tao.algorithm;
 
 import lombok.Data;
 
-import java.util.LinkedList;
-import java.util.Optional;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * author: TAOPENG
@@ -33,20 +31,22 @@ public class TreeDemo {
 
     // 先序遍历非递归实现
     public void preOrder2(TreeNode node) {
+        Stack<TreeNode> stack = new Stack<>();
+        List<Integer> list = new ArrayList<>();
         Optional.ofNullable(node).ifPresent(n -> {
-            Stack<TreeNode> stack = new Stack<>();
-            while (n != null || !stack.isEmpty()) {
-                while (n != null) {
-                    System.out.print(n.getValue() + " ");
-                    stack.push(n);
-                    n = n.getLeftChild();
+            stack.push(n);
+            while (!stack.isEmpty()) {
+                TreeNode root = stack.pop();
+                list.add(root.value);
+                if (root.rightChild != null) {
+                    stack.push(root.rightChild);
                 }
-                if (!stack.isEmpty()) {
-                    n = stack.pop().getRightChild();
+                if (root.leftChild != null) {
+                    stack.push(root.leftChild);
                 }
             }
         });
-
+        list.forEach(e -> System.out.print(e + " "));
     }
 
     public void midOrder(TreeNode node) {
