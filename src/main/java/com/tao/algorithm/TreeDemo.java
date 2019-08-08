@@ -83,40 +83,25 @@ public class TreeDemo {
             System.out.print(n.getValue() + " ");
         });
     }
+
     // 后序遍历非递归实现
     public void postOrder2(TreeNode node) {
+        Stack<TreeNode> stack = new Stack<>();
+        LinkedList<Integer> output = new LinkedList<>();
         Optional.ofNullable(node).ifPresent(n -> {
-            Stack<TreeNode> s = new Stack<>();
-
-            TreeNode curNode = n; //当前访问的结点
-            TreeNode lastVisitNode = null; //上次访问的结点
-            //把currentNode移到左子树的最下边
-            while (curNode != null) {
-                s.push(curNode);
-                curNode = curNode.getLeftChild();
-            }
-            while (!s.empty()) {
-                curNode = s.pop();  //弹出栈顶元素
-                //一个根节点被访问的前提是：无右子树或右子树已被访问过
-                if (curNode.getRightChild() != null && curNode.getRightChild() != lastVisitNode) {
-                    //根节点再次入栈
-                    s.push(curNode);
-                    //进入右子树，且可肯定右子树一定不为空
-                    curNode = curNode.getRightChild();
-                    while (curNode != null) {
-                        //再走到右子树的最左边
-                        s.push(curNode);
-                        curNode = curNode.getLeftChild();
-                    }
-                } else {
-                    //访问
-                    System.out.print(curNode.getValue() + " ");
-                    //修改最近被访问的节点
-                    lastVisitNode = curNode;
+            stack.push(node);
+            while (!stack.isEmpty()) {
+                TreeNode root = stack.pop();
+                output.push(root.value);
+                if (root.leftChild != null) {
+                    stack.push(root.leftChild);
+                }
+                if (root.rightChild != null) {
+                    stack.push(root.rightChild);
                 }
             }
         });
-
+        output.forEach(e -> System.out.print(e + " "));
     }
 
     public void levelOrder(TreeNode node) {
