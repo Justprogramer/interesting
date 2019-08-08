@@ -6,7 +6,8 @@ import java.util.Optional;
 /**
  * @author: Penger
  * @time: 2019/8/7
- * @description: <p>
+ * @description: <p>LRU算法的设计原则是：如果一个数据在最近一段时间没有被访问到，那么在将来它被访问的可能性也很小。
+ * 也就是说，当限定的空间已存满数据时，应当把最久没有被访问到的数据淘汰
  * </p>
  **/
 public class CustomLru<K, V> {
