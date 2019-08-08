@@ -59,21 +59,20 @@ public class TreeDemo {
 
     // 中序遍历非递归实现
     public void midOrder2(TreeNode node) {
-        Optional.ofNullable(node).ifPresent(n -> {
-            Stack<TreeNode> stack = new Stack<>();
-            while (n != null || !stack.isEmpty()) {
-                while (n != null) {
-                    stack.push(n);
-                    n = n.getLeftChild();
+        Stack<TreeNode> stack = new Stack<>();
+        List<Integer> list = new ArrayList<>();
+        Optional.ofNullable(node).ifPresent(cur -> {
+            while (cur != null || !stack.isEmpty()) {
+                while (cur != null) {
+                    stack.push(cur);
+                    cur = cur.getLeftChild();
                 }
-                if (!stack.isEmpty()) {
-                    TreeNode child = stack.pop();
-                    System.out.print(child.getValue() + " ");
-                    n = child.getRightChild();
-                }
+                TreeNode child = stack.pop();
+                list.add(child.getValue());
+                cur = child.getRightChild();
             }
         });
-
+        list.forEach(e-> System.out.print(e+" "));
     }
 
     public void postOrder(TreeNode node) {
