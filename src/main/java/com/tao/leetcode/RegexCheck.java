@@ -28,6 +28,7 @@ public class RegexCheck {
      * 1. bbb 和 a*b*,这种情况可能是a的已经比较完成，需要跳过p的前2个字符再比较剩下的字符串，根据p的特征进行判断
      * 2. aaabbb 和 b*,这种情况直接是不相等，会被直接返回，不需要比较后面的字符串
      * 相等时，需要比较之后的字符串，每次相等时，需要把s往后移1位，根据p是否可能会带*分别判断p后移的位数
+     *
      * @param s string
      * @param p pattern
      * @return match result
@@ -43,8 +44,31 @@ public class RegexCheck {
         return firstMatch && isMatch(s.substring(1), p.substring(1));
     }
 
+    public boolean isMatchTwo(String s, String p) {
+        if (p == null || p.length() == 0) {
+            return s == null || s.length() == 0;
+        }
+        int m = s.length();
+        int n = p.length();
+        boolean[][] match = new boolean[m + 1][n + 1];
+        match[0][0] = true;
+        for (int j = 1; j <= n; j++) {
+            match[0][j] = match[0][j - 1] && p.charAt(j-1) == '*';
+        }
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (p.charAt(j - 1) == '*') {
+                    match[i][j] = match[i][j - 1] || match[i - 1][j];
+                } else {
+                    match[i][j] = match[i - 1][j - 1] && (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '?');
+                }
+            }
+        }
+        return match[m][n];
+    }
+
     @Test
     public void test() {
-        log.info("{}", isMatch("aaaabbb", "a*b.*b"));
+        log.info("{}", isMatchTwo("adceb", "*a*b"));
     }
 }
