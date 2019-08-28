@@ -44,6 +44,7 @@ public class UniquePathWithObstacles {
         for (int i = 0; i <= m - 1; i++) {
             for (int j = 0; j <= n - 1; j++) {
                 if (obstacleGrid[i][j] == 1) {
+                    // 有障碍说明此处不可达，直接设为0
                     path[i][j] = 0;
                     continue;
                 }
