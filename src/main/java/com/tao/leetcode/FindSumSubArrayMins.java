@@ -20,7 +20,7 @@ public class FindSumSubArrayMins {
         for (int i = 0; i < array.length; i++) {
             sum += minSubArray(array, i);
         }
-        return (int)(sum % (1e9 + 7));
+        return (int) (sum % (1e9 + 7));
     }
 
     private static long minSubArray(int[] array, int i) {
