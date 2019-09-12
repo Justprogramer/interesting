@@ -72,7 +72,7 @@ public class TreeDemo {
                 cur = child.getRightChild();
             }
         });
-        list.forEach(e-> System.out.print(e+" "));
+        list.forEach(e -> System.out.print(e + " "));
     }
 
     public void postOrder(TreeNode node) {
@@ -104,6 +104,35 @@ public class TreeDemo {
     }
 
     public void levelOrder(TreeNode node) {
+//        Optional.ofNullable(node).ifPresent(n -> {
+//            LinkedList<TreeNode> linkedList = new LinkedList<>();
+//            linkedList.add(n);
+//            while (!linkedList.isEmpty()) {
+//                TreeNode current = linkedList.poll();
+//                System.out.print(current.getValue() + " ");
+//                Optional.ofNullable(current.getLeftChild()).ifPresent(linkedList::add);
+//                Optional.ofNullable(current.getRightChild()).ifPresent(linkedList::add);
+//            }
+//        });
+        ArrayDeque<TreeNode> queue = new ArrayDeque<>();
+        queue.addLast(node);
+        int count = queue.size();
+        while (!queue.isEmpty()) {
+            while (!queue.isEmpty() && count > 0) {
+                TreeNode n = queue.poll();
+                System.out.print(n.getValue() + " ");
+                if (n.leftChild != null) {
+                    queue.addLast(n.leftChild);
+                }
+                if (n.rightChild != null) {
+                    queue.addLast(n.rightChild);
+                }
+                count--;
+            }
+            count = queue.size();
+        }
+    }
+ public void levelOrder2(TreeNode node) {
         Optional.ofNullable(node).ifPresent(n -> {
             LinkedList<TreeNode> linkedList = new LinkedList<>();
             linkedList.add(n);
@@ -180,6 +209,9 @@ public class TreeDemo {
         System.out.println();
         System.out.print("levelOrder:");
         treeDemo.levelOrder(root);
+        System.out.println();
+        System.out.print("levelOrder2:");
+        treeDemo.levelOrder2(root);
         System.out.println();
         System.out.print("DFS:");
         treeDemo.dfs(root);
