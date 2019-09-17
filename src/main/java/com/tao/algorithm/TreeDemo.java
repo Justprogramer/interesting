@@ -86,7 +86,7 @@ public class TreeDemo {
     // 后序遍历非递归实现
     public void postOrder2(TreeNode node) {
         Stack<TreeNode> stack = new Stack<>();
-        LinkedList<Integer> output = new LinkedList<>();
+        Stack<Integer> output = new Stack<>();
         Optional.ofNullable(node).ifPresent(n -> {
             stack.push(node);
             while (!stack.isEmpty()) {
@@ -100,20 +100,12 @@ public class TreeDemo {
                 }
             }
         });
-        output.forEach(e -> System.out.print(e + " "));
+        while (!output.isEmpty()) {
+            System.out.print(output.pop() + " ");
+        }
     }
 
     public void levelOrder(TreeNode node) {
-//        Optional.ofNullable(node).ifPresent(n -> {
-//            LinkedList<TreeNode> linkedList = new LinkedList<>();
-//            linkedList.add(n);
-//            while (!linkedList.isEmpty()) {
-//                TreeNode current = linkedList.poll();
-//                System.out.print(current.getValue() + " ");
-//                Optional.ofNullable(current.getLeftChild()).ifPresent(linkedList::add);
-//                Optional.ofNullable(current.getRightChild()).ifPresent(linkedList::add);
-//            }
-//        });
         ArrayDeque<TreeNode> queue = new ArrayDeque<>();
         queue.addLast(node);
         int count = queue.size();
@@ -132,7 +124,8 @@ public class TreeDemo {
             count = queue.size();
         }
     }
- public void levelOrder2(TreeNode node) {
+
+    public void levelOrder2(TreeNode node) {
         Optional.ofNullable(node).ifPresent(n -> {
             LinkedList<TreeNode> linkedList = new LinkedList<>();
             linkedList.add(n);
